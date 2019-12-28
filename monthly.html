@@ -1,0 +1,95 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>MREC..!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="modal.css">
+</head>
+
+<body>
+        
+			<!--data-modal-->
+				<div class="container">
+					<div class="row">
+						<input type="submit" name="button" id="modal-btn" value="monthly attendance list">
+						<div class="col-md-4">
+							<div id="my-modal" class="modal ">
+						    <div class="modal-content wow zoomIn" id="mdid">
+						      <div class="modal-header">
+						      	<h2 id="mdlg" class="text-fluid text-center"><strong>ATTENDENCE</strong></h2>
+						        <span class="close" id="closebutton">&times;</span>
+						        
+						      </div>
+							      <div class="modal-body">
+										    <div class="main-agileinfo">
+										      <div class="agileits-top">
+										        <form action="monthly.php" method="post">
+													<label for="department">select department</label>
+										          <select name="department" class="select">
+										                <option value="cse">CSE</option>
+										                <option value="me">ME</option>
+										                <option value="ce">CE</option>
+														<option value="it">IT</option>
+														<option value="eee">EEE</option>
+														<option value="ece">ECE</option>
+														<option value="min">MIN</option>
+										              </select>
+													  <br>
+													  <label for="year">select year</label>
+										          <select name="year" class="select">
+										                <option value="1">year1</option>
+										                <option value="2">year2</option>
+										                <option value="3">year3</option>
+										                <option value="4">year4</option>
+										              </select>
+													  <br>
+													  <label for="section">select section</label>
+										          <select name="section" class="select">
+										                <option value="A">A</option>
+										                <option value="B">B</option>
+										                <option value="C">C</option>
+										                <option value="D">D</option>
+										              </select>
+										              <br>
+										          
+										          <input type="submit" value="GET LIST">
+										        </form>
+										      </div>
+										    </div>
+    
+							      </div>
+							    <!--  
+						     	 <div class="modal-footer">
+						          <a href="registration.html" class="text-fluid" target="_blank">don't have an account? Signup</a>
+						      	</div>  -->
+				    	</div>
+			  			</div>
+				</div>
+			  </div>
+			</div>
+
+
+
+
+	<script src="modal.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    
+</body>
+
+</html>
