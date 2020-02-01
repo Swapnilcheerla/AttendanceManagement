@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>HOD Registration</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center">
+<a class="navbar-brand" href="www.mrec.ac.in">MREC</a>
+</nav>
+<br>
+<div class="container">
+  <h4>HOD Registration</h4>
+  <form method="POST" onsubmit="return validate()" name="f1" >
+    <p>
+      <?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
+      <?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
+    </p>
+    <div class="form-group">
+      <label for="usr">Name:</label>
+      <input type="text" class="form-control" id="usr" name="username" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="number">Mobile Number:</label>
+      <input type="text" class="form-control" id="number" name="number" required>
+    </div>
+    <div class="form-group">
+  <label for="department">Select list:</label>
+        <select class="form-control" id="department" name="department">
+            <option selected value="0">Select Department</option>
+            <option value="CE">Civil Engineering</option>
+            <option value="EEE">Electronics &amp; Electrical Engineering(EEE)</option>
+            <option value="ME">Mechanical Engineering</option>
+            <option value="ECE">Electronics &amp; Communication Engineering(ECE)</option>
+            <option value="CSE">Computer Science &amp; Engineering</option>
+            <option value="IT">Information Technology</option>
+            <!--<option value="HS">Humanities &amp; Sciences</option>-->
+            <option value="MBA">Masters of Business Adminstration</option>
+            <option value="MIN">Mining Engineering</option>
+        </select>
+    </div> 
+    <div class="form-group">
+      <label for="pwd1">Password:</label>
+      <input type="password" class="form-control" id="pwd1" name="pwd1" required>
+    </div>
+    <div class="form-group">
+      <label for="pwd2">ConfirmPassword:</label>
+      <input type="password" class="form-control" id="pwd2" name="pwd2" required>
+    </div>
+    <button type="submit" class="btn btn-primary" name="submit" >Submit</button>
+  </form>
+</div>
+</body>
+</html>
+<script>
+function validate(){
+    if(document.f1.department.value=="0"){
+        window.alert("Please select a department.");
+        return false;
+    }
+    if(document.f1.number.value.length!="10"){
+        window.alert("Number should be exactly 10 digits.");
+        return false;
+    }
+    if(document.f1.pwd1.value.length<8){
+        window.alert("Minimum password length is 8 characters.");
+        return false;
+    }
+    if(document.f1.pwd1.value!=document.f1.pwd2.value){
+        window.alert("Passwords did not match.");
+        return false;
+    }
+    return true;
+}
+</script>
+<?php
+  if(isset($_POST["submit"])){
+    $conn = new mysqli("localhost", "root", "", "authority");
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
+    $sql = "SELECT hod_id FROM hod_login_info where hod_email='".$_POST["email"]."';";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) 
+      echo "<script>window.alert('A HOD with that mail already exists')</script>";
+    else {
+      $hod_name=$_POST["username"];
+      $hod_email=$_POST["email"];
+      $hod_number=$_POST["number"];
+      $hod_department=$_POST["department"];
+      $hod_password=MD5($_POST["pwd1"]);
+      $sql = "INSERT into hod_login_info(`hod_name`,`hod_email`,`hod_number`,`hod_department`,`hod_password`) values ('$hod_name','$hod_email','$hod_number','$hod_department','$hod_password')";
+      if ($conn->query($sql) === TRUE) {
+        echo "<script>window.alert('Registration Succesful')</script>";
+      } 
+      else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
+    }
+  }
+?>
